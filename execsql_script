@@ -1,0 +1,14 @@
+cd /MMBService/export/scripts
+
+cat >> exectemp_{{UUID}}.sql <<EOL
+set linesize 5000;
+set trimout on;
+set pagesize 500;
+set tab off;
+set wrap on;
+{{SQL}}
+EOL
+
+./sqlplusShell.sh < exectemp_{{UUID}}.sql
+
+rm exectemp_{{UUID}}.sql
